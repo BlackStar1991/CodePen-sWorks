@@ -5,9 +5,9 @@ function IllusionBall(canvaElement) {
 
     this.initialize = function () {
 
-        var canvas, numberOfCorn, corners, numberField, numberOfAngls;
+        var canvas, numberOfCorners, corners, numberField, numberOfAngls;
         canvas = document.getElementById(this.canvaElement);
-        numberOfCorn = 48;
+        numberOfCorners = 48;
         corners = $(".corners");
         numberField = $('span');
         numberOfAngls = corners.val();
@@ -24,7 +24,7 @@ function IllusionBall(canvaElement) {
             numberOfAngls = corners.val();
             console.log(numberOfAngls + "  =numberOfAngls");
             numberField.text(numberOfAngls);
-            numberOfCorn = numberOfAngls;
+            numberOfCorners = numberOfAngls;
             $this.renderCircle();
         });
 
@@ -41,13 +41,13 @@ function IllusionBall(canvaElement) {
                 c = 0;
             var step = 1;
 
-            for (var i = 0; i <= numberOfCorn; i++) {
+            for (var i = 0; i <= numberOfCorners; i++) {
                 var R = step * radius;
                 var f = Math.PI / 2;
                 if (c <= COLORS.length) {  // задаем цвет
                     ctx.beginPath();
-                    var X = x + R * Math.cos(f + ((Math.PI * 2 * i) / numberOfCorn));
-                    var Y = y + R * Math.sin(f + ((Math.PI * 2 * i) / numberOfCorn));
+                    var X = x + R * Math.cos(f + ((Math.PI * 2 * i) / numberOfCorners));
+                    var Y = y + R * Math.sin(f + ((Math.PI * 2 * i) / numberOfCorners));
                     ctx.arc(X, Y, radius, 0, Math.PI * 2, true);
                     ctx.fillStyle = COLORS[c];
                     ctx.fill();
@@ -56,7 +56,7 @@ function IllusionBall(canvaElement) {
                     if (c == COLORS.length) {
                         c = 0;
                     }
-                    if ((i == numberOfCorn) && ( (radius * step)) < x * 0.85) {
+                    if ((i == numberOfCorners) && ( (radius * step)) < x * 0.85) {
                         step++;
                         radius = 1.1 * radius;
                         i = 0;

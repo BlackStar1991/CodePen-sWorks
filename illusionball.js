@@ -5,12 +5,12 @@ function IllusionBall(canvaElement) {
 
     this.initialize = function () {
 
-        var canvas, numberOfCorn, corners, numberField, a;
+        var canvas, numberOfCorn, corners, numberField, numberOfAngls;
         canvas = document.getElementById(this.canvaElement);
         numberOfCorn = 48;
         corners = $(".corners");
         numberField = $('span');
-        a = corners.val();
+        numberOfAngls = corners.val();
 
         $(window).resize(function () {
             var halfScreen = $(window).height();
@@ -18,19 +18,20 @@ function IllusionBall(canvaElement) {
             canvas.style.height = (halfScreen / 2 ) + "px";
         });
 
-        numberField.text(a);
+        numberField.text(numberOfAngls);
 
         corners.on("input", function () {
-            a = corners.val();
-            console.log(a + "  =a");
-            numberField.text(a);
-            numberOfCorn = a;
-            $this.createCircle();
+            numberOfAngls = corners.val();
+            console.log(numberOfAngls + "  =numberOfAngls");
+            numberField.text(numberOfAngls);
+            numberOfCorn = numberOfAngls;
+            $this.renderCircle();
         });
 
         var ctx = canvas.getContext('2d');
 
-        this.createCircle = function () {
+
+        this.renderCircle = function () {
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -64,7 +65,7 @@ function IllusionBall(canvaElement) {
             }
         };
 
-        this.createCircle();
+        this.renderCircle();
     }
 }
 

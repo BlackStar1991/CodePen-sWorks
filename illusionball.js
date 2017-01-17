@@ -3,9 +3,8 @@ function IllusionBall(canvaElement) {
     var $this = this;
 
     this.initialize = function () {
-
-        var canvas, numberOfCorn, corners, numberField, a, color;
-        color = ["#2E3691", "#485A8B", "#9B2A89", "#E6194D", "#F31C26", "#F27E1E", "#FFC80D", "#AFCA3E", "#15A14F", "#5B9E71", "#54C6D3", "#0CAAE3"];
+        const  COLOR = ["#2E3691", "#485A8B", "#9B2A89", "#E6194D", "#F31C26", "#F27E1E", "#FFC80D", "#AFCA3E", "#15A14F", "#5B9E71", "#54C6D3", "#0CAAE3"];
+        var canvas, numberOfCorn, corners, numberField, a;
         canvas = document.getElementById(this.canvaElement);
         numberOfCorn = 48;
         corners = $(".corners");
@@ -43,16 +42,16 @@ function IllusionBall(canvaElement) {
             for (var i = 0; i <= numberOfCorn; i++) {
                 var R = step * radius;
                 var f = Math.PI / 2;
-                if (c <= color.length) {  // задаем цвет
+                if (c <= COLOR.length) {  // задаем цвет
                     ctx.beginPath();
                     var X = x + R * Math.cos(f + ((Math.PI * 2 * i) / numberOfCorn));
                     var Y = y + R * Math.sin(f + ((Math.PI * 2 * i) / numberOfCorn));
                     ctx.arc(X, Y, radius, 0, Math.PI * 2, true);
-                    ctx.fillStyle = color[c];
+                    ctx.fillStyle = COLOR[c];
                     ctx.fill();
                     ctx.stroke();
                     c++;
-                    if (c == color.length) {
+                    if (c == COLOR.length) {
                         c = 0;
                     }
                     if ((i == numberOfCorn) && ( (radius * step)) < x * 0.85) {
